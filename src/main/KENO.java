@@ -8,7 +8,7 @@ import gui.KenoFrame;
 /**
  * Main-Klasse
  * @author zzaxec
- * Version 2.1
+ * Version 1.3.0
  */
 
 public class KENO {

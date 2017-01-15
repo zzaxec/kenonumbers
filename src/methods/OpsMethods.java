@@ -118,8 +118,6 @@ public class OpsMethods {
 	}
 	
 	public static void generateNumbers2(ArrayList<int[]> liste, int[] keno, double[] stats){
-		double medium = computeMedium(stats);
-		ArrayList<Integer> temp;
 		int[] zahlen = new int[70];
 		Random r = new Random();
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
@@ -146,41 +144,27 @@ public class OpsMethods {
 		for(int i=0; i<zahlen.length; i++){
 			if(zahlen[i]==0)
 				continue;
-			else if(stats[i]<(medium+5) && stats[i]>(medium-15))
+			else
 				paare.put(zahlen[i], stats[i]);
 		}
 
-		temp = new ArrayList<Integer>();
 		
-		while(!paare.isEmpty()){
-			temp.add(entriesSortedByValues(paare).last().getKey());
+//		while(!paare.isEmpty()){
+//			//add the key with the highest probability 
+//			keys.add(entriesSortedByValues(paare).last().getKey());
+//			//add the values of the key (the probability)
+//			values.add(entriesSortedByValues(paare).last().getValue());
+//			// delete the last pair
+//			paare.remove(entriesSortedByValues(paare).last().getKey(), entriesSortedByValues(paare).last().getValue());
+//		}
+		
+		for(int i=0; i<keno.length; i++){
+			keno[i] = entriesSortedByValues(paare).last().getKey();
 			paare.remove(entriesSortedByValues(paare).last().getKey(), entriesSortedByValues(paare).last().getValue());
 		}
 		
-		for(int i=0; i<keno.length; i++){
-			int zufall = r.nextInt(temp.size());
-			keno[i] = temp.get(zufall);
-			temp.remove(zufall);
-		}
-		
-		System.out.println(medium);
 		
 	}
-	
-	/**
-	 * 
-	 * @param stats
-	 * @return
-	 */
-	public static double computeMedium(double[] stats){
-		double erg = 0.0;
-		for(int i=0; i<stats.length; i++){
-			erg += stats[i];
-		}
-		erg = erg / stats.length;
-		return erg;
-	}
-	
 	//Sortieralgorithmus welches die Values einer Map aufsteigend sortiert
 	static <K,V extends Comparable<? super V>>
 	SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {

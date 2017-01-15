@@ -14,7 +14,7 @@ public class KenoFrame extends JFrame{
 	int hoehe = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getHeight()- getHeight())/4);
 	//Constructor
 	public KenoFrame(){
-		setTitle("KENO");
+		setTitle("KENO v1.3.1");
 		setSize(800, 500);
 		setResizable(false);
 		setLocation(breite, hoehe);
