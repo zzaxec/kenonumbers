@@ -366,7 +366,7 @@ public class KenoPanel extends JPanel{
 	
 	/**
 	 * 
-	 * @author Hakan
+	 * @author zzaxec
 	 *
 	 */
 	private class getAction implements ActionListener{

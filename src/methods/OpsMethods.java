@@ -15,7 +15,7 @@ import javax.swing.JButton;
 /**
  * Diese Klasse enthaelt alle Methoden, die zur Berechnung und Datenauswertung geschrieben und verwendet werden.
  * Jede Methode besitzt eine eigene Kommentierung zum vereinfachtem Verständnis.
- * @author Hakan
+ * @author zzaxec
  *
  */
 /**

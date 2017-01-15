@@ -114,7 +114,7 @@ public class Datapanel extends JPanel{
 	
 	/**
 	 * 
-	 * @author Hakan
+	 * @author zzaxec
 	 *
 	 */
 	private class ActListener implements ActionListener{
@@ -155,7 +155,7 @@ public class Datapanel extends JPanel{
 	
 	/**
 	 * 
-	 * @author Hakan
+	 * @author zzaxec
 	 *
 	 */
 	private class DiverseButtons implements ActionListener{
