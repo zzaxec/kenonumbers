@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Image;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
@@ -14,8 +15,8 @@ public class KenoFrame extends JFrame{
 	int hoehe = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getHeight()- getHeight())/4);
 	//Constructor
 	public KenoFrame(){
-		setTitle("KENO v1.3.1");
-		setSize(800, 500);
+		setTitle("KENO 1.4.0");
+		setSize(1200, 500);
 		setResizable(false);
 		setLocation(breite, hoehe);
 		KenoPanel cont = new KenoPanel();

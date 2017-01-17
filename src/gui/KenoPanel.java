@@ -27,7 +27,8 @@ import methods.OpsMethods;
 
 public class KenoPanel extends JPanel{
 	ArrayList<int[]> daten = new ArrayList<int[]>();
-	private int[] randomKenoNumbs = new int[7];
+	private int[] randomKenoNumbs;
+	private int arrayLaenge;
 	private double[] statistics = new double[70];
 	
 
@@ -398,7 +399,9 @@ public class KenoPanel extends JPanel{
 				
 			}
 			if(e.getSource().equals(generate)){
-				OpsMethods.generateNumbers2(daten, randomKenoNumbs, statistics);
+				arrayLaenge = OpsMethods.laengederMap(daten,statistics);
+				randomKenoNumbs = new int[arrayLaenge];
+				OpsMethods.generateNumbers2(daten,randomKenoNumbs, statistics);
 				Arrays.sort(randomKenoNumbs);
 				String temp = "";
 				try {
@@ -408,7 +411,7 @@ public class KenoPanel extends JPanel{
 				}
 				display.setText("");
 				for(int i=0; i<randomKenoNumbs.length; i++){
-					temp += Integer.toString(randomKenoNumbs[i])+": "+Double.toString(statistics[randomKenoNumbs[i]-1])+"%"+" | ";
+					temp += Double.toString(statistics[randomKenoNumbs[i]-1])+"%"+" | ";
 				}
 				display.setText(temp);
 				

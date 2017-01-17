@@ -117,9 +117,10 @@ public class OpsMethods {
 		}
 	}
 	
-	public static void generateNumbers2(ArrayList<int[]> liste, int[] keno, double[] stats){
+	public static void generateNumbers2(ArrayList<int[]> liste,int[] keno, double[] stats){
 		int[] zahlen = new int[70];
 		Random r = new Random();
+		double medium = computeMedium(stats);
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
 		// FÜlle das Array mit den Zahlen von 1 bis 70
 		for(int i=0; i<zahlen.length; i++){
@@ -144,27 +145,18 @@ public class OpsMethods {
 		for(int i=0; i<zahlen.length; i++){
 			if(zahlen[i]==0)
 				continue;
-			else
+			if(stats[i]<medium+3.0 && stats[i]>medium-3.0)
 				paare.put(zahlen[i], stats[i]);
 		}
 
-		
-//		while(!paare.isEmpty()){
-//			//add the key with the highest probability 
-//			keys.add(entriesSortedByValues(paare).last().getKey());
-//			//add the values of the key (the probability)
-//			values.add(entriesSortedByValues(paare).last().getValue());
-//			// delete the last pair
-//			paare.remove(entriesSortedByValues(paare).last().getKey(), entriesSortedByValues(paare).last().getValue());
-//		}
-		
+		System.out.println(entriesSortedByValues(paare));
 		for(int i=0; i<keno.length; i++){
 			keno[i] = entriesSortedByValues(paare).last().getKey();
 			paare.remove(entriesSortedByValues(paare).last().getKey(), entriesSortedByValues(paare).last().getValue());
 		}
-		
-		
+		System.out.println(computeMedium(stats));
 	}
+	
 	//Sortieralgorithmus welches die Values einer Map aufsteigend sortiert
 	static <K,V extends Comparable<? super V>>
 	SortedSet<Map.Entry<K,V>> entriesSortedByValues(Map<K,V> map) {
@@ -178,6 +170,50 @@ public class OpsMethods {
 	    );
 	    sortedEntries.addAll(map.entrySet());
 	    return sortedEntries;
+	}
+	
+	public static int laengederMap(ArrayList<int[]> liste,double[] stats){
+		int laenge;
+		int[] zahlen = new int[70];
+		Random r = new Random();
+		double medium = computeMedium(stats);
+		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
+		// FÜlle das Array mit den Zahlen von 1 bis 70
+		for(int i=0; i<zahlen.length; i++){
+			zahlen[i] = i+1;
+		}
+		//Streiche die Zahlen der letzten Ziehungen
+		for(int i=0; i<liste.get(last).length; i++){
+			zahlen[liste.get(last)[i]-1] = 0;
+		}
+		
+		SortedMap<Integer, Double> paare = new TreeMap<Integer,Double>();
+		
+		//Füge die Paare in die HashMap ein
+		for(int i=0; i<zahlen.length; i++){
+			if(zahlen[i]==0)
+				continue;
+			if(stats[i]<medium+3.0 && stats[i]>medium-3.0)
+				paare.put(zahlen[i], stats[i]);
+		}
+		
+		laenge = paare.size();
+		
+		return laenge;
+	}
+	
+	/**
+	 * 
+	 * @param stats
+	 * @return
+	 */
+	public static Double computeMedium(double[] stats){
+		double erg = 0.0;
+		for(int i=0; i<stats.length; i++){
+			erg += stats[i];
+		}
+		erg = erg / stats.length;
+		return erg;
 	}
 	
 	/**
