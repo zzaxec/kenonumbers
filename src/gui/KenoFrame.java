@@ -2,7 +2,11 @@ package gui;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 /**
@@ -13,14 +17,22 @@ import javax.swing.JFrame;
 public class KenoFrame extends JFrame{
 	int breite = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getWidth()- getWidth())/3);
 	int hoehe = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getHeight()- getHeight())/4);
+	
+	BufferedImage im;
+
 	//Constructor
 	public KenoFrame(){
-		setTitle("KENO 1.4.0");
-		setSize(1200, 500);
+		try {
+			im = ImageIO.read(new File("icons/zzaxec.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		setTitle("KENO 1.5.1");
+		setSize(800, 500);
 		setResizable(false);
+		setIconImage(im);
 		setLocation(breite, hoehe);
 		KenoPanel cont = new KenoPanel();
 		add(cont);
 	}
-
 }

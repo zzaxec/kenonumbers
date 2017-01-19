@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -30,6 +33,7 @@ public class KenoPanel extends JPanel{
 	private int[] randomKenoNumbs;
 	private int arrayLaenge;
 	private double[] statistics = new double[70];
+	
 	
 
 	//Buttons
@@ -98,7 +102,7 @@ public class KenoPanel extends JPanel{
 			numb56 = new JButton("56"),
 			numb57 = new JButton("57"),
 			numb58 = new JButton("58"),
-			numb59 = new JButton("69"),
+			numb59 = new JButton("59"),
 			numb60 = new JButton("60"),
 			numb61 = new JButton("61"),
 			numb62 = new JButton("62"),
@@ -411,7 +415,7 @@ public class KenoPanel extends JPanel{
 				}
 				display.setText("");
 				for(int i=0; i<randomKenoNumbs.length; i++){
-					temp += Double.toString(statistics[randomKenoNumbs[i]-1])+"%"+" | ";
+					temp += Integer.toString(randomKenoNumbs[i])+" | ";
 				}
 				display.setText(temp);
 				
