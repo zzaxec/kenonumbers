@@ -117,11 +117,32 @@ public class OpsMethods {
 		}
 	}
 	
+	/**
+	 * Diese Methode generiert neue KENO-Zahlen fuer die naechste Ziehung. Dabei berücksichtigt er nur Zahlen,
+	 * dessen Wahrscheinlichkeit sich um einen vorher festgelegten Wert von der Durchschnittswahrscheinlichkeit variiert
+	 * und die Zahlen der letzten Ziehung vernachlässigt werden.
+	 * Die Toleranz der Variierung liegt derzeit bei 3%.
+	 * @param liste die Liste mit jeder Ziehung (Datensatz)
+	 * @param keno das Array der generierten Zahlen fuer die naechste Ziehung
+	 * @param stats die Statistiken jeder Ziffer
+	 */
 	public static void generateNumbers2(ArrayList<int[]> liste,int[] keno, double[] stats){
-		int[] zahlen = new int[70];
+		// Zaehler berechnen
+		int erg = 0;
+		for(int i=0; i<stats.length; i++){
+			erg += stats[i];
+		}
+		// Nenner berechnen
+		int size = stats.length;
+
+		// Noetige Deklarationen
 		Random r = new Random();
+		int[] zahlen = new int[70];
 		double medium = computeMedium(stats);
+		
+		// Letzte, vorletzte und vorvorletzte Ziehung
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
+		
 		// FÜlle das Array mit den Zahlen von 1 bis 70
 		for(int i=0; i<zahlen.length; i++){
 			zahlen[i] = i+1;
@@ -139,6 +160,7 @@ public class OpsMethods {
 //			zahlen[liste.get(last2)[i]-1] = 0;
 //		}
 		
+		// MAP
 		SortedMap<Integer, Double> paare = new TreeMap<Integer,Double>();
 		
 		//Füge die Paare in die HashMap ein
@@ -148,13 +170,11 @@ public class OpsMethods {
 			if(stats[i]<medium+3.0 && stats[i]>medium-3.0)
 				paare.put(zahlen[i], stats[i]);
 		}
-
-		System.out.println(entriesSortedByValues(paare));
+		
 		for(int i=0; i<keno.length; i++){
-			keno[i] = entriesSortedByValues(paare).last().getKey();
-			paare.remove(entriesSortedByValues(paare).last().getKey(), entriesSortedByValues(paare).last().getValue());
+			keno[i] = paare.firstKey();
+			paare.remove(paare.firstKey());
 		}
-		System.out.println(computeMedium(stats));
 	}
 	
 	//Sortieralgorithmus welches die Values einer Map aufsteigend sortiert

@@ -415,12 +415,12 @@ public class KenoPanel extends JPanel{
 				}
 				display.setText("");
 				for(int i=0; i<randomKenoNumbs.length; i++){
-					temp += Integer.toString(randomKenoNumbs[i])+" | ";
+					temp += Double.toString(statistics[randomKenoNumbs[i]-1])+" | ";
 				}
 				display.setText(temp);
 				
 				// Markiere die generierten Zahlen
-				for(int i=0; i<70; i++){
+				for(int i=0; i<=70; i++){
 					if( i == 0)
 						continue;
 					if(OpsMethods.findInArray(randomKenoNumbs,i)){
