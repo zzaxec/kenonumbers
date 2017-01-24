@@ -1,5 +1,7 @@
 package methods;
 
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList; 
 import java.util.Comparator;
 import java.util.Map;
@@ -139,6 +141,7 @@ public class OpsMethods {
 		Random r = new Random();
 		int[] zahlen = new int[70];
 		double medium = computeMedium(stats);
+		double threshholdLow = medium-2.0, threshholdhigh = medium + 4.0;
 		
 		// Letzte, vorletzte und vorvorletzte Ziehung
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
@@ -167,15 +170,20 @@ public class OpsMethods {
 		for(int i=0; i<zahlen.length; i++){
 			if(zahlen[i]==0)
 				continue;
-			if(stats[i]<medium+3.0 && stats[i]>medium-3.0)
+			if(stats[i]<=threshholdhigh && stats[i]>=threshholdLow )
 				paare.put(zahlen[i], stats[i]);
 		}
+		
 		
 		for(int i=0; i<keno.length; i++){
 			keno[i] = paare.firstKey();
 			paare.remove(paare.firstKey());
 		}
+		
+		System.out.println(medium);
 	}
+	
+
 	
 	//Sortieralgorithmus welches die Values einer Map aufsteigend sortiert
 	static <K,V extends Comparable<? super V>>

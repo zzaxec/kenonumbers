@@ -27,7 +27,7 @@ public class KenoFrame extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		setTitle("KENO 1.6.0");
+		setTitle("KENO 1.7.0");
 		setSize(1200, 500);
 		setResizable(false);
 		setIconImage(im);
