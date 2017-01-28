@@ -418,6 +418,7 @@ public class KenoPanel extends JPanel{
 					temp += Double.toString(statistics[randomKenoNumbs[i]-1])+" | ";
 				}
 				display.setText(temp);
+				System.out.println(randomKenoNumbs.length);
 				
 				// Markiere die generierten Zahlen
 				for(int i=0; i<=70; i++){

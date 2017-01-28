@@ -141,7 +141,7 @@ public class OpsMethods {
 		Random r = new Random();
 		int[] zahlen = new int[70];
 		double medium = computeMedium(stats);
-		double threshholdLow = medium-2.0, threshholdhigh = medium + 4.0;
+		double threshholdLow = medium-3.0, threshholdhigh = medium + 3.0;
 		
 		// Letzte, vorletzte und vorvorletzte Ziehung
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
