@@ -403,8 +403,7 @@ public class KenoPanel extends JPanel{
 				
 			}
 			if(e.getSource().equals(generate)){
-				arrayLaenge = OpsMethods.laengederMap(daten,statistics);
-				randomKenoNumbs = new int[arrayLaenge];
+				randomKenoNumbs = new int[30];
 				OpsMethods.generateNumbers2(daten,randomKenoNumbs, statistics);
 				Arrays.sort(randomKenoNumbs);
 				String temp = "";
@@ -413,12 +412,7 @@ public class KenoPanel extends JPanel{
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-				display.setText("");
-				for(int i=0; i<randomKenoNumbs.length; i++){
-					temp += Double.toString(statistics[randomKenoNumbs[i]-1])+" | ";
-				}
-				display.setText(temp);
-				System.out.println(randomKenoNumbs.length);
+				display.setText(Integer.toString(randomKenoNumbs.length));
 				
 				// Markiere die generierten Zahlen
 				for(int i=0; i<=70; i++){

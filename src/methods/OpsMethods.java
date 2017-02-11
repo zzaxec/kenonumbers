@@ -147,8 +147,7 @@ public class OpsMethods {
 		// Letzte, vorletzte und vorvorletzte Ziehung
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
 		
-		// FÜlle das Array mit den Zahlen von 1 bis 70
-		// Fï¿½lle das Array mit den Zahlen von 1 bis 70
+		// Fuelle das Array mit den Zahlen von 1 bis 70
 		for(int i=0; i<zahlen.length; i++){
 			zahlen[i] = i+1;
 		}
@@ -165,22 +164,28 @@ public class OpsMethods {
 //			zahlen[liste.get(last2)[i]-1] = 0;
 //		}
 		
-		// MAP
-		SortedMap<Integer, Double> paare = new TreeMap<Integer,Double>();
+		int count1= 15, count2 = 15;
+		int zufall, indexZaehler=0;
 		
-		//Fï¿½ge die Paare in die HashMap ein
-		for(int i=0; i<zahlen.length; i++){
-			if(zahlen[i]==0)
+		while(count1>0){
+			zufall = r.nextInt(70)+1;
+			if(stats[zufall-1]<medium){
+				keno[indexZaehler] = zufall;
+				indexZaehler++;
+				count1--;
+			}else
 				continue;
-			if(stats[i]<=threshholdhigh && stats[i]>=threshholdLow )
-				paare.put(zahlen[i], stats[i]);
+		}
+		while(count2>0){
+			zufall = r.nextInt(70)+1;
+			if(stats[zufall-1]>medium){
+				keno[indexZaehler] = zufall;
+				indexZaehler++;
+				count2--;
+			}else
+				continue;
 		}
 		
-		
-		for(int i=0; i<keno.length; i++){
-			keno[i] = paare.firstKey();
-			paare.remove(paare.firstKey());
-		}
 		
 		System.out.println(medium);
 	}
@@ -200,36 +205,6 @@ public class OpsMethods {
 	    );
 	    sortedEntries.addAll(map.entrySet());
 	    return sortedEntries;
-	}
-	
-	public static int laengederMap(ArrayList<int[]> liste,double[] stats){
-		int laenge;
-		int[] zahlen = new int[70];
-		Random r = new Random();
-		double medium = computeMedium(stats);
-		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
-		// Fï¿½lle das Array mit den Zahlen von 1 bis 70
-		for(int i=0; i<zahlen.length; i++){
-			zahlen[i] = i+1;
-		}
-		//Streiche die Zahlen der letzten Ziehungen
-		for(int i=0; i<liste.get(last).length; i++){
-			zahlen[liste.get(last)[i]-1] = 0;
-		}
-		
-		SortedMap<Integer, Double> paare = new TreeMap<Integer,Double>();
-		
-		//Fï¿½ge die Paare in die HashMap ein
-		for(int i=0; i<zahlen.length; i++){
-			if(zahlen[i]==0)
-				continue;
-			if(stats[i]<medium+3.0 && stats[i]>medium-3.0)
-				paare.put(zahlen[i], stats[i]);
-		}
-		
-		laenge = paare.size();
-		
-		return laenge;
 	}
 	
 	/**
@@ -298,7 +273,7 @@ public class OpsMethods {
 	public static void computeStatistik(ArrayList<int[]> liste, double[] container){
 		double relative = liste.size();
 		int[] stat = new int[70];
-		// Zï¿½hle die Hï¿½ufigkeit der bisherigen Zahlen
+		// Zaehle die Haeufigkeit der bisherigen Zahlen
 		for(int i=0; i<liste.size(); i++){
 			for(int j=0; j<liste.get(i).length; j++){
 				stat[liste.get(i)[j]-1]++;
