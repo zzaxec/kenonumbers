@@ -16,7 +16,7 @@ import javax.swing.JButton;
 
 /**
  * Diese Klasse enthaelt alle Methoden, die zur Berechnung und Datenauswertung geschrieben und verwendet werden.
- * Jede Methode besitzt eine eigene Kommentierung zum vereinfachtem Verständnis.
+ * Jede Methode besitzt eine eigene Kommentierung zum vereinfachtem Verstï¿½ndnis.
  * @author zzaxec
  *
  */
@@ -26,9 +26,10 @@ import javax.swing.JButton;
  */
 public class OpsMethods {
 	/**
-	 * 
-	 * @param txt
-	 * @param data
+	 * Diese Methode speichert Zahlen, welche als Strings eingegeben wurden in ein
+	 * eindimensionales Array durch schrittweise unterteilung des Strings.
+	 * @param txt der zu zerlegene String, der die Zahlen enthÃ¤lt, welche gespeichert werden muessen
+	 * @param data 
 	 */
 	public static int[] saveArray(String txt){
 		int[] temp = new int[20];
@@ -147,6 +148,7 @@ public class OpsMethods {
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
 		
 		// FÜlle das Array mit den Zahlen von 1 bis 70
+		// Fï¿½lle das Array mit den Zahlen von 1 bis 70
 		for(int i=0; i<zahlen.length; i++){
 			zahlen[i] = i+1;
 		}
@@ -166,7 +168,7 @@ public class OpsMethods {
 		// MAP
 		SortedMap<Integer, Double> paare = new TreeMap<Integer,Double>();
 		
-		//Füge die Paare in die HashMap ein
+		//Fï¿½ge die Paare in die HashMap ein
 		for(int i=0; i<zahlen.length; i++){
 			if(zahlen[i]==0)
 				continue;
@@ -206,7 +208,7 @@ public class OpsMethods {
 		Random r = new Random();
 		double medium = computeMedium(stats);
 		int last = liste.size()-1, last1 = liste.size()-2, last2 = liste.size()-3;
-		// FÜlle das Array mit den Zahlen von 1 bis 70
+		// Fï¿½lle das Array mit den Zahlen von 1 bis 70
 		for(int i=0; i<zahlen.length; i++){
 			zahlen[i] = i+1;
 		}
@@ -217,7 +219,7 @@ public class OpsMethods {
 		
 		SortedMap<Integer, Double> paare = new TreeMap<Integer,Double>();
 		
-		//Füge die Paare in die HashMap ein
+		//Fï¿½ge die Paare in die HashMap ein
 		for(int i=0; i<zahlen.length; i++){
 			if(zahlen[i]==0)
 				continue;
@@ -269,7 +271,7 @@ public class OpsMethods {
 		String erg = "";
 		int relative = liste.size();
 		int[] stat = new int[70];
-		// Zähle die Häufigkeit der bisherigen Zahlen
+		// Zï¿½hle die Hï¿½ufigkeit der bisherigen Zahlen
 		for(int i=0; i<liste.size(); i++){
 			for(int j=0; j<liste.get(i).length; j++){
 				stat[liste.get(i)[j]-1]++;
@@ -296,7 +298,7 @@ public class OpsMethods {
 	public static void computeStatistik(ArrayList<int[]> liste, double[] container){
 		double relative = liste.size();
 		int[] stat = new int[70];
-		// Zähle die Häufigkeit der bisherigen Zahlen
+		// Zï¿½hle die Hï¿½ufigkeit der bisherigen Zahlen
 		for(int i=0; i<liste.size(); i++){
 			for(int j=0; j<liste.get(i).length; j++){
 				stat[liste.get(i)[j]-1]++;
