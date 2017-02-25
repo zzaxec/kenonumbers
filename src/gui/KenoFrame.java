@@ -15,7 +15,7 @@ import javax.swing.JFrame;
  *
  */
 public class KenoFrame extends JFrame{
-	int breite = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getWidth()- getWidth())/3);
+	int breite = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getWidth()- getWidth())/4);
 	int hoehe = (int) ((Toolkit.getDefaultToolkit().getScreenSize().getHeight()- getHeight())/4);
 	
 	BufferedImage im;

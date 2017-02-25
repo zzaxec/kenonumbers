@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.BorderLayout; 
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ import java.util.Arrays;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
@@ -29,6 +31,7 @@ import methods.OpsMethods;
 
 
 public class KenoPanel extends JPanel{
+	private final String versionsnummer = "1.8.0";
 	ArrayList<int[]> daten = new ArrayList<int[]>();
 	private int[] randomKenoNumbs;
 	private int arrayLaenge;
@@ -44,6 +47,7 @@ public class KenoPanel extends JPanel{
 			loadState = new JButton("Laden"),
 			lastNumbers = new JButton(""),
 			stats = new JButton("Statistik"),
+			ueber = new JButton("Ueber"),
 			numb1 = new JButton("1"),
 			numb2 = new JButton("2"),
 			numb3 = new JButton("3"),
@@ -138,10 +142,12 @@ public class KenoPanel extends JPanel{
 		loadState.addActionListener(aktion);
 		generate.addActionListener(aktion);
 		stats.addActionListener(aktion);
+		ueber.addActionListener(aktion);
 		
 		//
 		displayPanel.add(display);
 		displayPanel.add(stats);
+		displayPanel.add(ueber);
 		
 		//
 		helpPanel.add(saveState);
@@ -403,7 +409,7 @@ public class KenoPanel extends JPanel{
 				
 			}
 			if(e.getSource().equals(generate)){
-				randomKenoNumbs = new int[30];
+				randomKenoNumbs = new int[15];
 				OpsMethods.generateNumbers2(daten,randomKenoNumbs, statistics);
 				Arrays.sort(randomKenoNumbs);
 				String temp = "";
@@ -436,6 +442,11 @@ public class KenoPanel extends JPanel{
 				statistiken.add(txt);
 				txt.setEditable(false);
 				
+			}
+			if(e.getSource().equals(ueber)){
+				Frame f = new Frame();
+				JOptionPane dialog = new JOptionPane();
+				dialog.showMessageDialog(f, "Autor : zzaxec"+"\n"+"Version: "+versionsnummer,"", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
 	}

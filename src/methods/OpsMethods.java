@@ -152,19 +152,19 @@ public class OpsMethods {
 			zahlen[i] = i+1;
 		}
 		//Streiche die Zahlen der letzten Ziehungen
-		for(int i=0; i<liste.get(last).length; i++){
-			zahlen[liste.get(last)[i]-1] = 0;
-		}
+//		for(int i=0; i<liste.get(last).length; i++){
+//			zahlen[liste.get(last)[i]-1] = 0;
+//		}
 		//Streiche die Zahlen der vorletzten Ziehung
 //		for(int i=0; i<liste.get(last).length; i++){
 //			zahlen[liste.get(last1)[i]-1] = 0;
 //		}
 		//Streiche die Zahlen der vorvorletzten Ziehung
-//		for(int i=0; i<liste.get(last).length; i++){
-//			zahlen[liste.get(last2)[i]-1] = 0;
-//		}
+		for(int i=0; i<liste.get(last).length; i++){
+			zahlen[liste.get(last2)[i]-1] = 0;
+		}
 		
-		int count1= 15, count2 = 15;
+		int count1= 10, count2 = 5;
 		int zufall, indexZaehler=0;
 		
 		while(count1>0){
