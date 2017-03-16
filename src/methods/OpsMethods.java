@@ -185,7 +185,6 @@ public class OpsMethods{
 			paare.remove(paare.firstKey());
 		}
 
-		System.out.println(medium);
 	}
 
 	// Sortieralgorithmus welches die Values einer Map aufsteigend sortiert
@@ -315,5 +314,90 @@ public class OpsMethods{
 			container[i] = Math.round((stat[i] / relative) * 100);
 		}
 
+	}
+
+	public static void newAlgorithm( ArrayList<int[]> ziehungen, double[] stats, ArrayList<Integer> over30,
+			ArrayList<Integer> exact20, ArrayList<Integer> exact10, ArrayList<Integer> lastDraw ){
+		Double valueOfStats = (double) 0;
+		for (int i = 0; i < stats.length; i++) {
+			valueOfStats = stats[i];
+			switch (valueOfStats.intValue()) {
+				case 0:
+					exact10.add(i + 1);
+					break;
+				case 10:
+					exact10.add(i + 1);
+					break;
+				case 20:
+					exact20.add(i + 1);
+					break;
+				case 30:
+					over30.add(i + 1);
+					break;
+				case 40:
+					over30.add(i + 1);
+					break;
+				case 50:
+					over30.add(i + 1);
+					break;
+				case 60:
+					over30.add(i + 1);
+					break;
+				case 70:
+					over30.add(i + 1);
+					break;
+				case 80:
+					over30.add(i + 1);
+					break;
+				case 90:
+					over30.add(i + 1);
+					break;
+				case 100:
+					over30.add(i + 1);
+					break;
+
+			}
+		}
+
+		for (int j = 0; j < 20; j++) {
+			lastDraw.add(ziehungen.get(ziehungen.size() - 1)[j]);
+		}
+	}
+
+	public static void generateNew( ArrayList<Integer> over30, ArrayList<Integer> exact20, ArrayList<Integer> exact10,
+			ArrayList<Integer> lastDraw, ArrayList<Integer> neueZahlen ){
+
+		Random r = new Random();
+		int zufall;
+		for (int i = 0; i < 7; i++) {
+			zufall = r.nextInt(over30.size());
+			neueZahlen.add(over30.get(zufall));
+			over30.remove(zufall);
+		}
+		for (int i = 0; i < 3; i++) {
+			zufall = r.nextInt(exact20.size());
+			neueZahlen.add(exact20.get(zufall));
+			exact20.remove(zufall);
+		}
+		for (int i = 0; i < 3; i++) {
+			zufall = r.nextInt(exact10.size());
+			neueZahlen.add(exact10.get(zufall));
+			exact10.remove(zufall);
+		}
+		for (int i = 0; i < 7; i++) {
+			zufall = r.nextInt(lastDraw.size());
+			neueZahlen.add(lastDraw.get(zufall));
+			lastDraw.remove(zufall);
+		}
+
+	}
+
+	public static void deleteAll( ArrayList<Integer> over30, ArrayList<Integer> exact20, ArrayList<Integer> exact10,
+			ArrayList<Integer> lastDraw, ArrayList<Integer> neueZahlen ){
+		over30.clear();
+		exact20.clear();
+		exact10.clear();
+		lastDraw.clear();
+		neueZahlen.clear();
 	}
 }
